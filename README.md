@@ -135,7 +135,7 @@ data_ccs.json
 
 + If you want to perform **VHE-base** mode, you can just use the `question` (yes_ / no_, the answer is based on the key.).
 + For **VHE-iac** and **VHE-icc**, you can use the `context` to get the inaccurate or incorrect context, and then combine it with the `question` to get the final question.
-  + For example: `question` + `" In case there is an inconsistency between the context and the image content, you should follow the image. "` + `context["iac"]`.
+  + For example: `context["iac"]` + `" In case there is an inconsistency between the context and the image content, you should follow the image. "` + `question`.
 
 ### The format of `data_ccs.jsonl`
    
