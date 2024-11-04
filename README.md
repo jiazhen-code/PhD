@@ -1,31 +1,31 @@
 # PhD: A Prompted Visual Hallucination Evaluation Dataset
 
-[//]: # (<div align="center">)
+<div align="center">
 
-[//]: # (  Jiazhen Liu<sup>1,2</sup>, Yuhan Fu<sup>1,2</sup>, Ruobing Xie<sup>2</sup>, Runquan Xie<sup>2</sup>, )
+  Jiazhen Liu<sup>1,2</sup>, Yuhan Fu<sup>1,2</sup>, Ruobing Xie<sup>2</sup>, Runquan Xie<sup>2</sup>, 
 
-[//]: # (</div>)
+</div>
 
-[//]: # (<div align="center">)
+<div align="center">
 
-[//]: # (  Xingwu Sun<sup>2</sup>, Fengzong Lian<sup>2</sup>, Zhanhui Kang<sup>1</sup> and Xirong Li<sup>1</sup>)
+  Xingwu Sun<sup>2</sup>, Fengzong Lian<sup>2</sup>, Zhanhui Kang<sup>1</sup> and Xirong Li<sup>1</sup>
 
-[//]: # (</div>)
+</div>
 
-[//]: # (<div align="center">)
+<div align="center">
 
-[//]: # (<sup>1</sup>Key Lab of DEKE, Renmin University of China    <sup>2</sup>Machine Learning Platform Department, Tencent)
+<sup>1</sup>Key Lab of DEKE, Renmin University of China    <sup>2</sup>Machine Learning Platform Department, Tencent
 
-[//]: # (</div>)
+</div>
 
-[//]: # (<div align="center">)
+<div align="center">
 
-[//]: # (    <a href="https://arxiv.org/abs/2403.11116"><img src="figs/Paper-Arxiv-orange.svg" ></a>)
+    <a href="https://arxiv.org/abs/2403.11116"><img src="figs/Paper-Arxiv-orange.svg" ></a>
 
-[//]: # (</div>)
+</div>
 
-[//]: # ()
-[//]: # (**Note: Due to certain policy restrictions, the version of the paper on arXiv is not the final version, whereas the data in this repository is the latest version. When using PhD dataset, it's advisable to refer to the instructions provided within. If you have any questions or concerns, feel free to raise an issue for discussion.**)
+
+**Note: Due to certain policy restrictions, the version of the paper on arXiv is not the final version, whereas the data in this repository is the latest version. When using PhD dataset, it's advisable to refer to the instructions provided within. If you have any questions or concerns, feel free to raise an issue for discussion.**
 
 ## Introduction
 
@@ -131,6 +131,8 @@ data_ccs.json
 · no_question: answer is "No" for this question.
 """
 ```
+For VHE-ccs, you can use the `yes_question` and `no_question` directly.
+
 Note, since the task of CCS data is hard to identify, 
 For instance, the question `Is the electric pole standing straight beside the road?` is associated with attribute and position tasks. So we don't recommond to simply categorize them into one single task.
 ## Metric
