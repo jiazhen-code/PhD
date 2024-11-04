@@ -95,7 +95,7 @@ images/
         0.png
         1.png
         ...
-        750.png
+        
 data_base_cxt.json
 data_ccs.json
 ```
