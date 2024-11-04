@@ -62,7 +62,7 @@ PhD is a consistently developing dataset, and we will continue to update and ref
 
 + VHE-base, VHE-iac, and VHE-icc use COCO 2014 images (including both train and val). You can directly download the images from the [COCO website](https://cocodataset.org/#download).
 
-+ VHE-ccs uses our AI-generated images. You can download it into `CCS_images` from the following links: [Google Drive](https://drive.google.com/file/d/1Ex7kRqIsG2oYdl4BPIC392pxuwnwML1m/view?usp=drive_link) or [Baidu Drive](https://pan.baidu.com/s/1dnZJDOAc3q419p-VwIViFw?pwd=a7xi).
++ VHE-ccs uses our AI-generated images. You can download it into `CCS_images` from the following links: [Google Drive](https://drive.google.com/file/d/1qYW6TfW-C8qz_9gXOpw2BwE-2DyN9NP-/view?usp=drive_link).
 
 
 ## Data Organization
@@ -87,11 +87,11 @@ images/
         1.png
         ...
         750.png
-data_base.json
+data_base_cxt.json
 data_ccs.json
 ```
 
-### The format of `data_base.jsonl`
+### The format of `data_base_cxt.jsonl`
 
 ``` python
 # Each line is one evaluation sample and can be read as a dict. in JSON format. 
@@ -99,21 +99,23 @@ data_ccs.json
 
 """
 · image_path: indicate the path to the test image.
-· item: hitem / gd, specify the hallucination element / ground truth.
-· object: specify which specific object in the question is associated with the hitem / gd.
-· question: ...
-· answer: ...
 · task: one of the 5 tasks
+· yes_question: answer is "Yes" for this question.
+· yes_gitem: ground truth element in yes_question.
+· no_question: answer is "No" for this question.
+· no_hitem: hallucination element in no_question.
+· object: specify which specific object in the question is associated with the yes_gitem / no_hitem. (None when task is object.)
 · context: {"iac": inaccurate context, "icc": incorrect context}
 """
 
 # For example
-{"image_path": ..., "hitem": "red", "item": "dresser", "answer": "No", 
-"question": "Is the dresser red in the image?", "task": "attribute", 
-"context": {"iac": ..., "icc": ...}}
+{"image_path": ..., "task": "attribute",
+"yes_question": "Is the motorcycle black in the image?",  "yes_gitem": "black", 
+"no_question": "Is the motorcycle red in the image?",  "no_hitem": "red", 
+"object": "motorcycle", "context": {"iac": ..., "icc": ...}}
 ```
 
-+ If you want to perform VHE-base mode, you can just use the `question` and `answer`.
++ If you want to perform VHE-base mode, you can just use the `question` (yes_ / no_, the answer is based on the key.).
 + For VHE-iac and VHE-icc, you can use the `context` to get the inaccurate or incorrect context, and then combine it with the `question` to get the final question.
   + For example: `question` + `" In case there is an inconsistency between the context and the image content, you should follow the image. "` + `context["iac"]`.
 
@@ -124,9 +126,9 @@ data_ccs.json
 # It includes the following keys:
 """
 · image_path: indicate the path to the test image.
-· ccs description: specific the reason why the image is counter-common-sense.
-· question: ...
-· answer: ...
+· ccs_description: specific the reason why the image is counter-common-sense.
+· yes_question: answer is "Yes" for this question.
+· no_question: answer is "No" for this question.
 """
 ```
 Note, since the task of CCS data is hard to identify, 
