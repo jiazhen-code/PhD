@@ -138,7 +138,7 @@ Simply to say, the PhD score is the F1 value of the recall rates for `yes` and `
 which is designed to be sensitive to the tendency of outputing `yes` or `no`, providing a nuanced understanding of the model's performance.
 
 <div align="center">
-  <img src="figs/phd_score.png" width="50%" alt="results1"> 
+  <img src="figs/phd_score.png" width="30%" alt="results1"> 
 </div>
 
 For the evaluation results, please refer to the `experiment` session of the paper, as well as the supplementary materials.
