@@ -154,7 +154,7 @@ which is designed to be sensitive to the tendency of outputing `yes` or `no`, pr
   <img src="figs/phd_score.png" width="30%" alt="results1"> 
 </div>
 
-For the evaluation results, please refer to the `experiment` session of the paper, as well as the supplementary materials.
+For the evaluation results, please refer to the `experiment` sector of the paper, as well as the supplementary materials.
 
 ## Citation
 
