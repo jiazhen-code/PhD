@@ -1,22 +1,30 @@
 # PhD: A Prompted Visual Hallucination Evaluation Dataset
 
-<div align="center">
+[//]: # (<div align="center">)
 
-  Jiazhen Liu<sup>1,2</sup>, Yuhan Fu<sup>1,2</sup>, Ruobing Xie<sup>2</sup>, Runquan Xie<sup>2</sup>, 
+[//]: # ()
+[//]: # (  Jiazhen Liu<sup>1,2</sup>, Yuhan Fu<sup>1,2</sup>, Ruobing Xie<sup>2</sup>, Runquan Xie<sup>2</sup>, )
 
-</div>
+[//]: # ()
+[//]: # (</div>)
 
-<div align="center">
+[//]: # ()
+[//]: # (<div align="center">)
 
-  Xingwu Sun<sup>2</sup>, Fengzong Lian<sup>2</sup>, Zhanhui Kang<sup>1</sup> and Xirong Li<sup>1</sup>
+[//]: # ()
+[//]: # (  Xingwu Sun<sup>2</sup>, Fengzong Lian<sup>2</sup>, Zhanhui Kang<sup>1</sup> and Xirong Li<sup>1</sup>)
 
-</div>
+[//]: # ()
+[//]: # (</div>)
 
-<div align="center">
+[//]: # ()
+[//]: # (<div align="center">)
 
-<sup>1</sup>Key Lab of DEKE, Renmin University of China    <sup>2</sup>Machine Learning Platform Department, Tencent
+[//]: # ()
+[//]: # (<sup>1</sup>Key Lab of DEKE, Renmin University of China    <sup>2</sup>Machine Learning Platform Department, Tencent)
 
-</div>
+[//]: # ()
+[//]: # (</div>)
 
 <div align="center">
     <a href="https://arxiv.org/abs/2403.11116"><img src="figs/Paper-Arxiv-orange.svg" ></a>
