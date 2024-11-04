@@ -39,7 +39,11 @@ Multimodal Large Language Models (MLLMs) hallucinate, resulting in an emerging t
 
 In particular, we consider **4** testing mode, including **5** visual tasks: object recognition, attribute recognition, sentiment understanding, positional reasoning, and counting.
 
-Note, the different modes are specifically designed to different source of hallucinations, including weak visual features (VHE-base), modality imbalance (VHE-iac and VHE-icc), and counter common sense (VHE-ccs).
+Note, the different modes are specifically designed to different source of hallucinations, including **visual ambiguity** (VHE-base), **multi-modal input** (VHE-iac and VHE-icc), and **counter common sense** (VHE-ccs). See the following figure for more details.
+<div align="center" >
+  <img src="figs/example2.png" width="60%" alt="example"> 
+</div>
+
 
 ### Showcases
  
@@ -120,8 +124,8 @@ data_ccs.json
 "object": "motorcycle", "context": {"iac": ..., "icc": ...}}
 ```
 
-+ If you want to perform VHE-base mode, you can just use the `question` (yes_ / no_, the answer is based on the key.).
-+ For VHE-iac and VHE-icc, you can use the `context` to get the inaccurate or incorrect context, and then combine it with the `question` to get the final question.
++ If you want to perform **VHE-base** mode, you can just use the `question` (yes_ / no_, the answer is based on the key.).
++ For **VHE-iac** and **VHE-icc**, you can use the `context` to get the inaccurate or incorrect context, and then combine it with the `question` to get the final question.
   + For example: `question` + `" In case there is an inconsistency between the context and the image content, you should follow the image. "` + `context["iac"]`.
 
 ### The format of `data_ccs.jsonl`
@@ -136,7 +140,7 @@ data_ccs.json
 · no_question: answer is "No" for this question.
 """
 ```
-For VHE-ccs, you can use the `yes_question` and `no_question` directly.
+For **VHE-ccs**, you can use the `yes_question` and `no_question` directly.
 
 Note, since the task of CCS data is hard to identify, 
 For instance, the question `Is the electric pole standing straight beside the road?` is associated with attribute and position tasks. So we don't recommond to simply categorize them into one single task.
