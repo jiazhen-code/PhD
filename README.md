@@ -1,53 +1,69 @@
 # PhD: A Prompted Visual Hallucination Evaluation Dataset
 
-<div align="center">
-  Jiazhen Liu<sup>1,2</sup>, Yuhan Fu<sup>1,2</sup>, Ruobing Xie<sup>2</sup>, Runquan Xie<sup>2</sup>, 
-</div>
-<div align="center">
-  Xingwu Sun<sup>2</sup>, Fengzong Lian<sup>2</sup>, Zhanhui Kang<sup>1</sup> and Xirong Li<sup>1</sup>
-</div>
-<div align="center">
-<sup>1</sup>Key Lab of DEKE, Renmin University of China    <sup>2</sup>Machine Learning Platform Department, Tencent
-</div>
-<div align="center">
-    <a href="https://arxiv.org/abs/2403.11116"><img src="figs/Paper-Arxiv-orange.svg" ></a>
-</div>
+[//]: # (<div align="center">)
 
-**Note: Due to certain policy restrictions, the version of the paper on arXiv is not the final version, whereas the data in this repository is the latest version. When using PhD dataset, it's advisable to refer to the instructions provided within. If you have any questions or concerns, feel free to raise an issue for discussion.**
+[//]: # (  Jiazhen Liu<sup>1,2</sup>, Yuhan Fu<sup>1,2</sup>, Ruobing Xie<sup>2</sup>, Runquan Xie<sup>2</sup>, )
+
+[//]: # (</div>)
+
+[//]: # (<div align="center">)
+
+[//]: # (  Xingwu Sun<sup>2</sup>, Fengzong Lian<sup>2</sup>, Zhanhui Kang<sup>1</sup> and Xirong Li<sup>1</sup>)
+
+[//]: # (</div>)
+
+[//]: # (<div align="center">)
+
+[//]: # (<sup>1</sup>Key Lab of DEKE, Renmin University of China    <sup>2</sup>Machine Learning Platform Department, Tencent)
+
+[//]: # (</div>)
+
+[//]: # (<div align="center">)
+
+[//]: # (    <a href="https://arxiv.org/abs/2403.11116"><img src="figs/Paper-Arxiv-orange.svg" ></a>)
+
+[//]: # (</div>)
+
+[//]: # ()
+[//]: # (**Note: Due to certain policy restrictions, the version of the paper on arXiv is not the final version, whereas the data in this repository is the latest version. When using PhD dataset, it's advisable to refer to the instructions provided within. If you have any questions or concerns, feel free to raise an issue for discussion.**)
 
 ## Introduction
 
-PhD is a dataset for Visual Hallucination Evaluation (VHE). Depending on what to ask (objects, attributes, ...) and how the questions are asked (neural or misleading), we structure PhD along two dimensions, i.e. task and mode. Our PhD dataset aims to explore the intrinsic causes of visual hallucination. The dataset construction centers around task-specific hallucinatory elements (hitems). The overall evaluation data consists of over 30,000 samples.
+Multimodal Large Language Models (MLLMs) hallucinate, resulting in an emerging topic of visual hallucination evaluation (VHE). We introduce in this paper PhD, a large-scale benchmark for VHE. The essence of VHE is to ask an MLLM the right questions concerning a specific image. Depending on what to ask (objects, attributes, sentiment, etc.) and how the questions are asked, we structure PhD along two dimensions, i.e. task and mode. Five visual recognition tasks, ranging from low-level (object / attribute recognition) to middle-level (sentiment / position recognition and counting), are considered. Besides a normal visual QA mode, which we term VHE-base, PhD also asks questions with inaccurate context (VHE-iac) or with incorrect context (VHE-icc), or with AI-generated counter common sense images (VHE-ccs). We construct PhD by a ChatGPT-assisted semi-automated pipeline, encompassing four pivotal modules: task-specific hallucinatory element (hitem) selection, hitem-embedded question generation, inaccurate / incorrect context generation, and CCS image generation. With over 102k VQA triplets in total, PhD reveals considerable variability in MLLMs' performance across various modes, offering valuable insights into the nature of hallucination issues. As such, PhD stands as a potent tool not only for VHE but may also play a significant role in the refinement of MLLMs.
+### Mode and Task
 
-### Task
+In particular, we consider **4** testing mode, including **5** visual tasks: object recognition, attribute recognition, sentiment understanding, positional reasoning, and counting.
 
-In particular, we consider **five** content-based tasks, including object recognition, attribute recognition, sentiment understanding, positional reasoning, and counting.
-
-### Mode
-
-We provide **two** modes: neutral and misleading. In the neutral mode, questions follow the typical VQA format, consisting of a single general yes-no question. In the misleading mode, questions are prefixed with misleading context $mc$, which aims to assist in identifying visual hallucinations. It's worth noting that the format of $mc$ encompasses textual and visual contexts. If not specified, the default is textual.
+Note, the different modes are specifically designed to different source of hallucinations, including weak visual features (VHE-base), modality imbalance (VHE-iac and VHE-icc), and counter common sense (VHE-ccs).
 
 ### Showcases
-
-**Ten tracks:**
-Showcases of the two modes and five subtasks for VHE, collectively forming **ten** evaluation tracks. $h$, $gd$, $q$, and $a$ symbolize hitem, grounding truth item, question, and answer, respectively. Additionally, $mc$​ signifies the misleading context, intentionally contrasting with the image content, designed to enable more stringent assessments in the misleading mode. 
+ 
+The statistics of the dataset and some examples are shown below. Images of VHE-base, VHE-iac, and VHE-icc are sourced from the COCO dataset. This ensures that MLLMs have been exposed to these images. Despite this, they can still generate incorrect answers, which reflects hallucinations in low-level visual tasks.
+<div align="center" > 
+  <img src="figs/statistics.png" width="70%" alt="example"> 
+</div>
 
 <div align="center" >
   <img src="figs/example1.png" width="100%" alt="example"> 
 </div>
 
-**Additional track:**
-The following represents the case of $mc$​ when it comprises visual context. The task involves object recognition.
++ **VHE-base**: Shown in (c) with red and green block. Basically you can regard it as a normal visual question answering task (normal question and image ). But we additionally indicate the hallucinatory element (`hitem`) in the question (see data.json).
++ **VHE-iac**: Shown in (c) with yellow block. For each question in VHE-base, we further combine it with inaccurate context. This inaccurate context has some noise information unrelated to the image.
++ **VHE-icc**: Shown in (c) with purple block. Similar to VHE-iac, the question is combined with incorrect context. This context is totally conflicted with the image.
++ **VHE-ccs**: Shown in (d). Though the question is normal, the image is generated by AI and is counter-common-sense in the real world.
 
-<div align="center">
-  <img src="figs/example2.png" width="55%" alt="example2"> 
-</div>
+
+PhD is a consistently developing dataset, and we will continue to update and refine it. If you have any questions or suggestions, please feel free to contact us.
+
 
 
 
 ## Image Download
 
-Please download the images from the following links: [Google Drive](https://drive.google.com/file/d/1Ex7kRqIsG2oYdl4BPIC392pxuwnwML1m/view?usp=drive_link) or [Baidu Drive](https://pan.baidu.com/s/1dnZJDOAc3q419p-VwIViFw?pwd=a7xi). Then, place them into the *images/* directory.
++ VHE-base, VHE-iac, and VHE-icc use COCO 2014 images (including both train and val). You can directly download the images from the [COCO website](https://cocodataset.org/#download).
+
++ VHE-ccs uses our AI-generated images. You can download it into `CCS_images` from the following links: [Google Drive](https://drive.google.com/file/d/1Ex7kRqIsG2oYdl4BPIC392pxuwnwML1m/view?usp=drive_link) or [Baidu Drive](https://pan.baidu.com/s/1dnZJDOAc3q419p-VwIViFw?pwd=a7xi).
+
 
 ## Data Organization
 
@@ -57,24 +73,25 @@ For your convenience in evaluation, please organize the data in the following fo
 
 ```
 images/
-    authentic/
-        COCO_val2014_000000000139.jpg
-        COCO_val2014_000000000164.jpg
-        ....       
-    manipulated/
-        alpaca/
-          0.jpg
-          0_bg.jpg
-          ...
-        ambnulance/
-          0.jpg
-          0_bg.jpg
-          ...
+    COCO/
+        train2014/   
+           COCO_train2014_000000000139.jpg
+           COCO_train2014_000000000164.jpg
+           ...
+        val2014/   
+           COCO_val2014_000000000139.jpg
+           COCO_val2014_000000000164.jpg
+           ...      
+    CCS_images/
+        0.png
+        1.png
         ...
-data.jsonl
+        750.png
+data_base.json
+data_ccs.json
 ```
 
-### The format of `data.jsonl`
+### The format of `data_base.jsonl`
 
 ``` python
 # Each line is one evaluation sample and can be read as a dict. in JSON format. 
@@ -82,65 +99,49 @@ data.jsonl
 
 """
 · image_path: indicate the path to the test image.
-· hitem_gt: specify the item around which the question is constructed.
-· question:
-· answer:
+· item: hitem / gd, specify the hallucination element / ground truth.
+· object: specify which specific object in the question is associated with the hitem / gd.
+· question: ...
+· answer: ...
 · task: one of the 5 tasks
-· mode: neutral or misleading
+· context: {"iac": inaccurate context, "icc": incorrect context}
 """
 
 # For example
-{"image_path": "images/authentic/COCO_val2014_000000125069.jpg", "hitem_gt": "dresser", "answer": "No", 
-"question": ..., "task": "object_recognition", "mode": "misleading_textual_indirect"}
+{"image_path": ..., "hitem": "red", "item": "dresser", "answer": "No", 
+"question": "Is the dresser red in the image?", "task": "attribute", 
+"context": {"iac": ..., "icc": ...}}
 ```
 
++ If you want to perform VHE-base mode, you can just use the `question` and `answer`.
++ For VHE-iac and VHE-icc, you can use the `context` to get the inaccurate or incorrect context, and then combine it with the `question` to get the final question.
+  + For example: `question` + `" In case there is an inconsistency between the context and the image content, you should follow the image. "` + `context["iac"]`.
 
-To distinguish tracks, it's recommended to use the format `task + mode` for differentiation.
-
-```python
-track = task + '_' + mode.split('_')[0] + mode.split('_')[1]
-textual_category = mode.split('_')[2] if len(mode.split('_')) == 3 else None
+### The format of `data_ccs.jsonl`
+   
+``` python
+# Each line is one evaluation sample and can be read as a dict. in JSON format.
+# It includes the following keys:
+"""
+· image_path: indicate the path to the test image.
+· ccs description: specific the reason why the image is counter-common-sense.
+· question: ...
+· answer: ...
+"""
 ```
-
+Note, since the task of CCS data is hard to identify, 
+For instance, the question `Is the electric pole standing straight beside the road?` is associated with attribute and position tasks. So we don't recommond to simply categorize them into one single task.
 ## Metric
 
-We focus on evaluating the accuracy rate, the recall rate for "Yes" answers, the recall rate for "No" answers. We first calculate the harmonic mean of these two recall rates as $H_{recall}$. To derive a comprehensive final score, we calculate the harmonic mean of the accuracy rate and the $H_{recall}$, which we term the PhD score. 
+As mentioned in papers, we propose a novel evaluation metric, the PhD score, to evaluate the performance of MLLMs on the PhD dataset.
+Simply to say, the PhD score is the F1 value of the recall rates for `yes` and `no` answers, 
+which is designed to be sensitive to the tendency of outputing `yes` or `no`, providing a nuanced understanding of the model's performance.
 
 <div align="center">
-  <img src="figs/phd_score.png" width="30%" alt="results1"> 
+  <img src="figs/phd_score.png" width="50%" alt="results1"> 
 </div>
 
-The recall rates for "Yes" and "No" answers gauge the model's propensity to respond with "Yes" or "No," respectively. The PhD score is designed to be sensitive to these tendencies, providing a nuanced understanding of the model's performance.
-
-## Evaluation Results
-
-The evaluation results of mainstream LVLMs evaluated by PhD are shown below.
-
-1. Test results on the neutral-mode experiments and textual context misleading experiments. All results are presented using the average PhD score (see paper). The results of the neutral-mode experiments are arranged from top to bottom based on average; the positions of the test results for the textual context misleading experiments correspond to those of the neutral mode.
-
-   <div align="center">
-     <img src="figs/results1.png" width="100%" alt="results1"> 
-   </div>
-
-
-   The radar chart displays the evaluation results of the PhD dataset on selected LVLMs. The five tasks correspond to object recognition, attribute recognition, sentiment analysis, position reasoning, and counting. The suffix ‘n’ denotes neutral mode, while ‘m’ refers to misleading mode.
-
-   <div align="center">
-     <img src="figs/radder.png" width="55%" alt="radder"> 
-   </div>
-
-
-2. Test results for three categories of textual misleading contexts. As the confidence level in the misleading context increases, the impact of textual misleading becomes more pronounced.
-
-   <div align="center">
-     <img src="figs/results2.png" width="100%" alt="results2"> 
-   </div>
-
-3. Test results on visual context misleading experiments. "Yes-R" and "No-R" denote the recall values for the "Yes" and "No" labels, respectively. LVLMs are arranged in ascending order according to the PhD score.
-
-   <div align="center">
-     <img src="figs/results3.png" width="55%" alt="results3"> 
-   </div>
+For the evaluation results, please refer to the `experiment` session of the paper, as well as the supplementary materials.
 
 ## Citation
 
