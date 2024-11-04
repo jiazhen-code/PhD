@@ -44,6 +44,15 @@ Note, the different modes are specifically designed to different source of hallu
   <img src="figs/example2.png" width="60%" alt="example"> 
 </div>
 
+### The meaning of `hitem`
+**H**alluc**i**na**t**ory el**em**ents (hitems) refer to specific terms (words or phrases) in visual questions posed to a MLLM that lead to discrepancies between the MLLM’s response and the corresponding visual content.
+
+To illustrate, consider an image of a `dining table` setting that lacks a `fork`. Although the `fork` is absent, its association with the `dining table` makes it a potential hitem.
+
+The **PhD** dataset provides hitem information for each query. For VHE-ccs, we also include the `ccs_description` to elucidate why the image may easily induce hallucinations.
+
+Therefore, you will understand why the PhD questions are applicable to reflecting hallucinations. This is an aspect currently missing from other hallucination datasets.
+
 
 ### Showcases
  
