@@ -109,7 +109,7 @@ data_base_cxt.json
 data_ccs.json
 ```
 
-### The format of `data_base_cxt.jsonl`
+### The format of `data_base_cxt.json`
 
 ``` python
 # Each line is one evaluation sample and can be read as a dict. in JSON format. 
@@ -137,7 +137,7 @@ data_ccs.json
 + For **VHE-iac** and **VHE-icc**, you can use the `context` to get the inaccurate or incorrect context, and then combine it with the `question` to get the final question.
   + For example: `context["iac"]` + `" In case there is an inconsistency between the context and the image content, you should follow the image. "` + `question`.
 
-### The format of `data_ccs.jsonl`
+### The format of `data_ccs.json`
    
 ``` python
 # Each line is one evaluation sample and can be read as a dict. in JSON format.
