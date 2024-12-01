@@ -34,18 +34,18 @@
 
 ## Introduction
 
-Multimodal Large Language Models (MLLMs) hallucinate, resulting in an emerging topic of visual hallucination evaluation (VHE). We introduce in this paper PhD, a large-scale benchmark for VHE. The essence of VHE is to ask an MLLM the right questions concerning a specific image. Depending on what to ask (objects, attributes, sentiment, etc.) and how the questions are asked, we structure PhD along two dimensions, i.e. task and mode. Five visual recognition tasks, ranging from low-level (object / attribute recognition) to middle-level (sentiment / position recognition and counting), are considered. Besides a normal visual QA mode, which we term VHE-base, PhD also asks questions with inaccurate context (VHE-iac) or with incorrect context (VHE-icc), or with AI-generated counter common sense images (VHE-ccs). We construct PhD by a ChatGPT-assisted semi-automated pipeline, encompassing four pivotal modules: task-specific hallucinatory element (hitem) selection, hitem-embedded question generation, inaccurate / incorrect context generation, and CCS image generation. With over 102k VQA triplets in total, PhD reveals considerable variability in MLLMs' performance across various modes, offering valuable insights into the nature of hallucination issues. As such, PhD stands as a potent tool not only for VHE but may also play a significant role in the refinement of MLLMs.
+Multimodal Large Language Models (MLLMs) hallucinate, resulting in an emerging topic of visual hallucination evaluation (VHE). This paper contributes a ChatGPT-Prompted visual hallucination evaluation Dataset (PhD) for objective VHE at a large scale. The essence of VHE is to ask an MLLM questions about specific images to assess its susceptibility to hallucination. Depending on what to ask (objects, attributes, sentiment, etc.) and how the questions are asked, we structure PhD along two dimensions, i.e., task and mode. Five visual recognition tasks, ranging from low-level (object / attribute recognition) to middle-level (sentiment / position recognition and counting), are considered. Besides a normal visual QA mode, which we term PhD-base, PhD also asks questions with inaccurate context (PhD-iac) or with incorrect context (PhD-icc), or with AI-generated counter common sense images (PhD-ccs). We construct PhD by a ChatGPT-assisted semi-automated pipeline, encompassing four pivotal modules: task-specific hallucinatory item (hitem) selection, hitem-embedded question generation, inaccurate / incorrect context generation, and counter-common-sense (CCS) image generation. With over 14k daily images, 750 CCS images and 102k VQA triplets in total, PhD reveals considerable variability in MLLMs' performance across various modes and tasks, offering valuable insights into the nature of hallucination. As such, PhD stands as a potent tool not only for VHE but may also play a significant role in the refinement of MLLMs.
 ### Mode and Task
 
 In particular, we consider **4** testing mode, including **5** visual tasks: object recognition, attribute recognition, sentiment understanding, positional reasoning, and counting.
 
-Note, the different modes are specifically designed to different source of hallucinations, including **visual ambiguity** (VHE-base), **multi-modal input** (VHE-iac and VHE-icc), and **counter common sense** (VHE-ccs). See the following figure for more details.
+Note, the different modes are specifically designed to different source of hallucinations, including **visual ambiguity** (PhD-base), **multi-modal input** (PhD-iac and PhD-icc), and **counter common sense** (PhD-ccs). See the following figure for more details.
 <div align="center" >
   <img src="figs/example2.png" width="60%" alt="example"> 
 </div>
 
 ### The meaning of `hitem`
-**H**alluc**i**na**t**ory el**em**ents (hitems) refer to specific terms (words or phrases) in visual questions posed to a MLLM that lead to discrepancies between the MLLM’s response and the corresponding visual content.
+**H**alluc**i**na**t**ory it**em**s (hitems) refer to specific terms (words or phrases) in visual questions posed to a MLLM that lead to discrepancies between the MLLM’s response and the corresponding visual content.
 
 To illustrate, consider an image of a `dining table` setting that lacks a `fork`. Although the `fork` is absent, its association with the `dining table` makes it a potential hitem.
 
@@ -65,10 +65,10 @@ The statistics of the dataset and some examples are shown below. Images of VHE-b
   <img src="figs/example1.png" width="100%" alt="example"> 
 </div>
 
-+ **VHE-base**: Shown in (c) with red and green block. Basically you can regard it as a normal visual question answering task (normal question and image ). But we additionally indicate the hallucinatory element (`hitem`) in the question (see data.json).
-+ **VHE-iac**: Shown in (c) with yellow block. For each question in VHE-base, we further combine it with inaccurate context. This inaccurate context has some noise information unrelated to the image.
-+ **VHE-icc**: Shown in (c) with purple block. Similar to VHE-iac, the question is combined with incorrect context. This context is totally conflicted with the image.
-+ **VHE-ccs**: Shown in (d). Though the question is normal, the image is generated by AI and is counter-common-sense in the real world.
++ **PhD-base**: Shown in (c) with red and green block. Basically you can regard it as a normal visual question answering task (normal question and image ). But we additionally indicate the hallucinatory element (`hitem`) in the question (see data.json).
++ **PhD-iac**: Shown in (c) with yellow block. For each question in PhD-base, we further combine it with inaccurate context. This inaccurate context has some noise information unrelated to the image.
++ **PhD-icc**: Shown in (c) with purple block. Similar to PhD-iac, the question is combined with incorrect context. This context is totally conflicted with the image.
++ **PhD-ccs**: Shown in (d). Though the question is normal, the image is generated by AI and is counter-common-sense in the real world.
 
 
 PhD is a consistently developing dataset, and we will continue to update and refine it. If you have any questions or suggestions, please feel free to contact us.
@@ -78,9 +78,9 @@ PhD is a consistently developing dataset, and we will continue to update and ref
 
 ## Image Download
 
-+ VHE-base, VHE-iac, and VHE-icc use COCO 2014 images (including both train and val). You can directly download the images from the [COCO website](https://cocodataset.org/#download).
++ PhD-base, PhD-iac, and PhD-icc use COCO 2014 images (including both train and val). You can directly download the images from the [COCO website](https://cocodataset.org/#download).
 
-+ VHE-ccs uses our AI-generated images. You can download it into `CCS_images` from the following links: [Google Drive](https://drive.google.com/file/d/1qYW6TfW-C8qz_9gXOpw2BwE-2DyN9NP-/view?usp=drive_link).
++ PhD-ccs uses our AI-generated images. You can download it into `CCS_images` from the following links: [Google Drive](https://drive.google.com/file/d/1qYW6TfW-C8qz_9gXOpw2BwE-2DyN9NP-/view?usp=drive_link).
 
 
 ## Data Organization
@@ -108,55 +108,92 @@ images/
 data_base_cxt.json
 data_ccs.json
 ```
-
-### The format of `data_base_cxt.json`
+### Files for 4 modes
 
 ``` python
-# Each line is one evaluation sample and can be read as a dict. in JSON format. 
-# It includes the following keys:
+# this file contains data of PhD-base, PhD-iac, PhD-icc and PhD-ccs.
+# the file can be read as a dict. array in JSON format. 
+data = json.load(open('data.json', encoding='utf-8'))
+```
+
+### The format of `PhD-base`, `PhD-iac`, and `PhD-icc`
+
+``` python
+# Each sample includes the following keys:
 
 """
-· image_path: indicate the path to the test image.
+· image_id: indicate COCO_image id to the test image.
 · task: one of the 5 tasks
-· yes_question: answer is "Yes" for this question.
-· yes_gitem: ground truth element in yes_question.
-· no_question: answer is "No" for this question.
-· no_hitem: hallucination element in no_question.
-· object: specify which specific object in the question is associated with the yes_gitem / no_hitem. (None when task is object.)
+· yes_question: question which answer is yes.
+· no_question: question which answer is no.
+· hitem: hallucination item.
+· gt: ground truth.
+· subject: questioned subject.
 · context: {"iac": inaccurate context, "icc": incorrect context}
 """
-
-# For example
-{"image_path": ..., "task": "attribute",
-"yes_question": "Is the motorcycle black in the image?",  "yes_gitem": "black", 
-"no_question": "Is the motorcycle red in the image?",  "no_hitem": "red", 
-"object": "motorcycle", "context": {"iac": ..., "icc": ...}}
 ```
 
-+ If you want to perform **VHE-base** mode, you can just use the `question` (yes_ / no_, the answer is based on the key.).
-+ For **VHE-iac** and **VHE-icc**, you can use the `context` to get the inaccurate or incorrect context, and then combine it with the `question` to get the final question.
++ If you want to perform **PhD-base** mode, you can just use the `question` (yes_ / no_).
++ For **PhD-iac** and **PhD-icc**, you can use the `context` to get the inaccurate or incorrect context, and then combine it with the `question`.
   + For example: `context["iac"]` + `" In case there is an inconsistency between the context and the image content, you should follow the image. "` + `question`.
 
-### The format of `data_ccs.json`
+### The format of `PhD-ccs`
    
 ``` python
-# Each line is one evaluation sample and can be read as a dict. in JSON format.
-# It includes the following keys:
 """
-· image_path: indicate the path to the test image.
+· image_id: indicate id of our generated images.
 · ccs_description: specific the reason why the image is counter-common-sense.
-· yes_question: answer is "Yes" for this question.
-· no_question: answer is "No" for this question.
+· yes_question: question which answer is yes.
+· no_question: question which answer is no.
+· task: one of the 5 tasks.
 """
 ```
-For **VHE-ccs**, you can use the `yes_question` and `no_question` directly.
 
-Note, since the task of CCS data is hard to identify, 
-For instance, the question `Is the electric pole standing straight beside the road?` is associated with attribute and position tasks. So we don't recommond to simply categorize them into one single task.
+## Demo Code for Loading
+    
+``` python
+import json
+
+data = json.load(open('data.json', encoding='utf-8'))
+
+# Examples: Loading PhD-base, PhD-iac, PhD-icc, and PhD-ccs
+# PhD-base
+phd_base = [{'image_id': sample['image_id'], 'yes_question': sample['yes_question'], 
+             'no_question': sample['no_question']} for sample in data if 'ccs_description' not in sample]
+           
+# PhD-iac
+instruction = " In case there is an inconsistency between the context and the image content, you should follow the image. "
+phd_iac = []
+for sample in data:
+    if 'ccs_description' in sample:
+        continue
+    yes_question = sample["context"]["iac"] + instruction + sample['yes_question']
+    no_question = sample["context"]["iac"] + instruction + sample['no_question']
+    phd_iac.append({'image_id': sample['image_id'], 'yes_question': yes_question, 
+                    'no_question': no_question})
+
+# PhD-icc
+instruction = " In case there is an inconsistency between the context and the image content, you should follow the image. "
+phd_icc = []
+for sample in data:
+    if 'ccs_description' in sample:
+        continue
+    yes_question = sample["context"]["icc"] + instruction + sample['yes_question']
+    no_question = sample["context"]["icc"] + instruction + sample['no_question']
+    phd_iac.append({'image_id': sample['image_id'], 'yes_question': yes_question, 
+                    'no_question': no_question})
+                
+# PhD-ccs
+phd_ccs = [{'image_id': sample['image_id'], 'yes_question': sample['yes_question'], 
+             'no_question': sample['no_question']} for sample in data if 'ccs_description' in sample]
+```
+
++ `image_id` should be further compiled with the image path to load the image. For example, `images/COCO/val2014/COCO_val2014_{image_id}.jpg`.
+
 ## Metric
 
 As mentioned in papers, we propose a novel evaluation metric, the PhD score, to evaluate the performance of MLLMs on the PhD dataset.
-Simply to say, the PhD score is the F1 value of the recall rates for `yes` and `no` answers, 
+Simply to say, the **PhD Index** is the F1 value of the recall rates for `yes` and `no` answers, 
 which is designed to be sensitive to the tendency of outputing `yes` or `no`, providing a nuanced understanding of the model's performance.
 
 <div align="center">
