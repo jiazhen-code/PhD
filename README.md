@@ -37,7 +37,7 @@
          height="15"
          style="vertical-align: middle;">
   </a>
-
+  &nbsp;·&nbsp; 
   <!-- Hugging Face 徽标，建议与 Arxiv 按钮同高度 -->
   <a href="https://huggingface.co/datasets/AIMClab-RUC/PhD">
     <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
@@ -51,7 +51,7 @@
 
 
 ## News
-+ Great news! Our dataset is now live on [Hugging Face](https://huggingface.co/datasets/AIMClab-RUC/PhD). Dive in and explore its potential for your research and projects.
++ Great news! Our dataset is now available on [Hugging Face](https://huggingface.co/datasets/AIMClab-RUC/PhD). Dive in and explore its potential for your research and projects.
 
 ## Introduction
 
