@@ -1,4 +1,4 @@
-# PhD: A ChatGPT-Prompted Visual hallucination Evaluation Dataset
+# PhD: A ChatGPT-<u>P</u>rompted Visual <u>h</u>allucination Evaluation <u>D</u>ataset
 
 [//]: # (<div align="center">)
 
