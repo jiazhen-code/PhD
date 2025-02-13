@@ -34,7 +34,7 @@
          height="20"
          style="vertical-align: middle;text-decoration: none;"/>
   </a>
-  <span style="vertical-align: middle; text-decoration: none;">·</span>
+<!--   <span style="vertical-align: middle; text-decoration: none;">·</span>
   <a href="https://huggingface.co/datasets/AIMClab-RUC/PhD" 
      style="text-decoration: none;">
     <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
@@ -42,7 +42,7 @@
          title="View on Hugging Face"
          height="20"
          style="vertical-align: middle;"/>
-  </a>
+  </a> -->
 </p>
 
 
