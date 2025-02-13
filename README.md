@@ -30,7 +30,13 @@
     <a href="https://arxiv.org/abs/2403.11116"><img src="figs/Paper-Arxiv-orange.svg" ></a>
 </div>
 
+<div align="center">
+    <a href="https://huggingface.co/datasets/AIMClab-RUC/PhD">
+        <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" height="40">
+    </a>
+</div>
 
+## News
 
 ## Introduction
 
@@ -83,31 +89,29 @@ PhD is a consistently developing dataset, and we will continue to update and ref
 + PhD-ccs uses our AI-generated images. You can download it into `CCS_images` from the following links: [Google Drive](https://drive.google.com/file/d/1qYW6TfW-C8qz_9gXOpw2BwE-2DyN9NP-/view?usp=drive_link).
 
 
-## Data Organization
 
-### Directory
+## File Organization
 
 For your convenience in evaluation, please organize the data in the following format.
 
 ```
 images/
-    COCO/
-        train2014/   
-           COCO_train2014_000000000139.jpg
-           COCO_train2014_000000000164.jpg
-           ...
-        val2014/   
-           COCO_val2014_000000000139.jpg
-           COCO_val2014_000000000164.jpg
-           ...      
+    train2014/   
+       COCO_train2014_000000000139.jpg
+       COCO_train2014_000000000164.jpg
+       ...
+    val2014/   
+       COCO_val2014_000000000139.jpg
+       COCO_val2014_000000000164.jpg
+       ...      
     CCS_images/
         0.png
         1.png
         ...
-        
-data_base_cxt.json
-data_ccs.json
+
+data.json
 ```
+
 ### Files for 4 modes
 
 ``` python
@@ -153,42 +157,63 @@ data = json.load(open('data.json', encoding='utf-8'))
     
 ``` python
 import json
+import os
 
-data = json.load(open('data.json', encoding='utf-8'))
+def get_data(data=None):
+    if data is None:
+        data = json.load(open('data.json', encoding='utf-8'))
 
-# Examples: Loading PhD-base, PhD-iac, PhD-icc, and PhD-ccs
-# PhD-base
-phd_base = [{'image_id': sample['image_id'], 'yes_question': sample['yes_question'], 
-             'no_question': sample['no_question']} for sample in data if 'ccs_description' not in sample]
-           
-# PhD-iac
-instruction = " In case there is an inconsistency between the context and the image content, you should follow the image. "
-phd_iac = []
-for sample in data:
-    if 'ccs_description' in sample:
-        continue
-    yes_question = sample["context"]["iac"] + instruction + sample['yes_question']
-    no_question = sample["context"]["iac"] + instruction + sample['no_question']
-    phd_iac.append({'image_id': sample['image_id'], 'yes_question': yes_question, 
-                    'no_question': no_question})
+    # Examples: Loading PhD-base, PhD-iac, PhD-icc, and PhD-ccs
+    # PhD-base
+    phd_base = []
+    for sample in data:
+        if 'ccs_description' in sample:
+            continue
+        coco_image_name = f"{sample['image_id'].zfill(12)}"
+        image_path = f"images/train2014/COCO_train2014_{coco_image_name}.jpg"
+        if not os.path.exists(image_path):
+            image_path = f"images/val2014/COCO_val2014_{coco_image_name}.jpg"
+        phd_base.append({'image_id': sample['image_id'], 'yes_question': sample['yes_question'], 'image_path': image_path, 'task': sample['task'],
+                            'no_question': sample['no_question']})
 
-# PhD-icc
-instruction = " In case there is an inconsistency between the context and the image content, you should follow the image. "
-phd_icc = []
-for sample in data:
-    if 'ccs_description' in sample:
-        continue
-    yes_question = sample["context"]["icc"] + instruction + sample['yes_question']
-    no_question = sample["context"]["icc"] + instruction + sample['no_question']
-    phd_iac.append({'image_id': sample['image_id'], 'yes_question': yes_question, 
-                    'no_question': no_question})
-                
-# PhD-ccs
-phd_ccs = [{'image_id': sample['image_id'], 'yes_question': sample['yes_question'], 
-             'no_question': sample['no_question']} for sample in data if 'ccs_description' in sample]
+
+
+    # PhD-iac
+    instruction = " In case there is an inconsistency between the context and the image content, you should follow the image. "
+    phd_iac = []
+    for sample in data:
+        if 'ccs_description' in sample:
+            continue
+        yes_question = sample["context"]["iac"] + instruction + sample['yes_question']
+        no_question = sample["context"]["iac"] + instruction + sample['no_question']
+        coco_image_name = f"{sample['image_id'].zfill(12)}"
+        image_path = f"images/train2014/COCO_train2014_{coco_image_name}.jpg"
+        if not os.path.exists(image_path):
+            image_path = f"images/val2014/COCO_val2014_{coco_image_name}.jpg"
+        phd_iac.append({'image_id': sample['image_id'], 'yes_question': yes_question, 'image_path': image_path, 'task': sample['task'],
+                        'no_question': no_question})
+
+    # PhD-icc
+    instruction = " In case there is an inconsistency between the context and the image content, you should follow the image. "
+    phd_icc = []
+    for sample in data:
+        if 'ccs_description' in sample:
+            continue
+        yes_question = sample["context"]["icc"] + instruction + sample['yes_question']
+        no_question = sample["context"]["icc"] + instruction + sample['no_question']
+        coco_image_name = f"{sample['image_id'].zfill(12)}"
+        image_path = f"images/train2014/COCO_train2014_{coco_image_name}.jpg"
+        if not os.path.exists(image_path):
+            image_path = f"images/val2014/COCO_val2014_{coco_image_name}.jpg"
+        phd_icc.append({'image_id': sample['image_id'], 'yes_question': yes_question, 'image_path': image_path, 'task': sample['task'],
+                        'no_question': no_question})
+
+    # PhD-ccs
+    phd_ccs = [{'image_id': sample['image_id'], 'yes_question': sample['yes_question'], 'image_path': os.path.join('images/CCS_images', f"{sample['image_id']}.png"), 'task': sample['task'],
+                'no_question': sample['no_question']} for sample in data if 'ccs_description' in sample]
+
+    return phd_base, phd_iac, phd_icc, phd_ccs
 ```
-
-+ `image_id` should be further compiled with the image path to load the image. For example, `images/COCO/val2014/COCO_val2014_{image_id}.jpg`.
 
 ## Metric
 
