@@ -35,7 +35,7 @@
 <p align="center" style="margin: 20px 0;">
   <!-- Arxiv 按钮 -->
   <a href="https://arxiv.org/abs/2403.11116" 
-     style="margin-right: 20px; text-decoration: none;">
+     style="text-decoration: none;">
     <img src="figs/Paper-Arxiv-orange.svg"
          alt="View on Arxiv" 
          title="View on Arxiv"
