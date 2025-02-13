@@ -1,4 +1,9 @@
-# PhD: A ChatGPT-<u>P</u>rompted Visual <u>h</u>allucination Evaluation <u>D</u>ataset
+<h1>
+  PhD: A ChatGPT-
+  <span style="text-decoration: underline;">P</span>rompted Visual 
+  <span style="text-decoration: underline;">h</span>allucination Evaluation 
+  <span style="text-decoration: underline;">D</span>ataset
+</h1>
 
 [//]: # (<div align="center">)
 
@@ -26,28 +31,29 @@
 [//]: # ()
 [//]: # (</div>)
 
-<!-- 居中容器，给上下留一点空白 -->
-<div align="center" style="margin: 20px 0;">
-
-  <!-- Arxiv 按钮，调整右边距 -->
-  <a href="https://arxiv.org/abs/2403.11116" style="margin-right: 20px;">
+<p align="center" style="margin: 20px 0;">
+  <!-- Arxiv 按钮 -->
+  <a href="https://arxiv.org/abs/2403.11116" 
+     style="margin-right: 20px; text-decoration: none;">
     <img src="figs/Paper-Arxiv-orange.svg"
-         alt=""
+         alt="View on Arxiv" 
          title="View on Arxiv"
          height="15"
          style="vertical-align: middle;">
   </a>
-  &nbsp;·&nbsp; 
-  <!-- Hugging Face 徽标，建议与 Arxiv 按钮同高度 -->
-  <a href="https://huggingface.co/datasets/AIMClab-RUC/PhD">
+
+  &nbsp;·&nbsp;
+
+  <!-- Hugging Face 徽标 -->
+  <a href="https://huggingface.co/datasets/AIMClab-RUC/PhD" 
+     style="text-decoration: none;">
     <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
-         alt=""
+         alt="View on Hugging Face"
          title="View on Hugging Face"
          height="15"
          style="vertical-align: middle;">
   </a>
-
-</div>
+</p>
 
 
 ## News
