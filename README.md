@@ -26,13 +26,16 @@
 [//]: # ()
 [//]: # (</div>)
 
-<div align="center">
-    <a href="https://arxiv.org/abs/2403.11116">
-        <img src="figs/Paper-Arxiv-orange.svg" alt="Paper on Arxiv">
-    </a>
-    <a href="https://huggingface.co/datasets/AIMClab-RUC/PhD">
-        <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" >
-    </a>
+<div align="center" style="margin-bottom: 20px;">
+  <!-- Arxiv 按钮 -->
+  <a href="https://arxiv.org/abs/2403.11116" style="margin-right: 20px;">
+    <img src="figs/Paper-Arxiv-orange.svg" alt="Paper on Arxiv" height="40">
+  </a>
+
+  <!-- Hugging Face 徽标 -->
+  <a href="https://huggingface.co/datasets/AIMClab-RUC/PhD">
+    <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" height="40">
+  </a>
 </div>
 
 
