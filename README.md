@@ -28,15 +28,15 @@
 
 <div align="center">
     <a href="https://arxiv.org/abs/2403.11116"><img src="figs/Paper-Arxiv-orange.svg" ></a>
-</div>
 
-<div align="center">
     <a href="https://huggingface.co/datasets/AIMClab-RUC/PhD">
         <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" height="40">
     </a>
 </div>
 
+
 ## News
++ Great news! Our dataset is now live on [Hugging Face](https://huggingface.co/datasets/AIMClab-RUC/PhD). Dive in and explore its potential for your research and projects.
 
 ## Introduction
 
