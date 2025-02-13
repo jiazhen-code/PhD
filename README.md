@@ -1,9 +1,10 @@
 <h1>
   PhD: A ChatGPT-
-  <span style="text-decoration: underline;">P</span>rompted Visual 
-  <span style="text-decoration: underline;">h</span>allucination Evaluation 
-  <span style="text-decoration: underline;">D</span>ataset
+  <u>P</u>rompted Visual 
+  <u>h</u>allucination Evaluation 
+  <u>D</u>ataset
 </h1>
+
 
 [//]: # (<div align="center">)
 
@@ -41,9 +42,7 @@
          height="15"
          style="vertical-align: middle;">
   </a>
-
   &nbsp;·&nbsp;
-
   <!-- Hugging Face 徽标 -->
   <a href="https://huggingface.co/datasets/AIMClab-RUC/PhD" 
      style="text-decoration: none;">
