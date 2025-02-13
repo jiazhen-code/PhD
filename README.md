@@ -1,10 +1,4 @@
-<h1>
-  PhD: A ChatGPT-
-  <u>P</u>rompted Visual 
-  <u>h</u>allucination Evaluation 
-  <u>D</u>ataset
-</h1>
-
+# PhD: A ChatGPT-*P*rompted Visual *h*allucination Evaluation *D*ataset
 
 [//]: # (<div align="center">)
 
@@ -34,23 +28,20 @@
 
 <p align="center" style="margin: 20px 0;">
   <!-- Arxiv 按钮 -->
-  <a href="https://arxiv.org/abs/2403.11116" 
-     style="text-decoration: none;">
-    <img src="figs/Paper-Arxiv-orange.svg"
+  <a href="https://arxiv.org/abs/2403.11116" style="text-decoration: none;">
+     <img src="figs/Paper-Arxiv-orange.svg"
          alt="View on Arxiv" 
-         title="View on Arxiv"
-         height="15"
-         style="vertical-align: middle;">
+         height="20"
+         style="vertical-align: middle;text-decoration: none;"/>
   </a>
-  &nbsp;·&nbsp;
-  <!-- Hugging Face 徽标 -->
+  <span style="vertical-align: middle; text-decoration: none;">·</span>
   <a href="https://huggingface.co/datasets/AIMClab-RUC/PhD" 
      style="text-decoration: none;">
     <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
          alt="View on Hugging Face"
          title="View on Hugging Face"
-         height="15"
-         style="vertical-align: middle;">
+         height="20"
+         style="vertical-align: middle;"/>
   </a>
 </p>
 
