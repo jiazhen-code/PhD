@@ -34,7 +34,7 @@
     <img src="figs/Paper-Arxiv-orange.svg"
          alt=""
          title="View on Arxiv"
-         height="30"
+         height="15"
          style="vertical-align: middle;">
   </a>
 
@@ -43,7 +43,7 @@
     <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
          alt=""
          title="View on Hugging Face"
-         height="30"
+         height="15"
          style="vertical-align: middle;">
   </a>
 
