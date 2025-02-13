@@ -1,4 +1,4 @@
-# PhD: A Prompted Visual Hallucination Evaluation Dataset
+# PhD: A ChatGPT-Prompted Visual hallucination Evaluation Dataset
 
 [//]: # (<div align="center">)
 
@@ -26,16 +26,27 @@
 [//]: # ()
 [//]: # (</div>)
 
-<div align="center" style="margin-bottom: 20px;">
-  <!-- Arxiv 按钮 -->
+<!-- 居中容器，给上下留一点空白 -->
+<div align="center" style="margin: 20px 0;">
+
+  <!-- Arxiv 按钮，调整右边距 -->
   <a href="https://arxiv.org/abs/2403.11116" style="margin-right: 20px;">
-    <img src="figs/Paper-Arxiv-orange.svg" alt="Paper on Arxiv" height="40">
+    <img src="figs/Paper-Arxiv-orange.svg"
+         alt=""
+         title="View on Arxiv"
+         height="30"
+         style="vertical-align: middle;">
   </a>
 
-  <!-- Hugging Face 徽标 -->
+  <!-- Hugging Face 徽标，建议与 Arxiv 按钮同高度 -->
   <a href="https://huggingface.co/datasets/AIMClab-RUC/PhD">
-    <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" height="40">
+    <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
+         alt=""
+         title="View on Hugging Face"
+         height="30"
+         style="vertical-align: middle;">
   </a>
+
 </div>
 
 
