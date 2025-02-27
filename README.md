@@ -245,11 +245,9 @@ If you found this work useful, consider giving this repository a star and citing
 
 ```
 @misc{liu2024phd,
-      title={PhD: A Prompted Visual Hallucination Evaluation Dataset}, 
+      title={PhD: A ChatGPT-Prompted Visual hallucination Evaluation Dataset}, 
       author={Jiazhen Liu and Yuhan Fu and Ruobing Xie and Runquan Xie and Xingwu Sun and Fengzong Lian and Zhanhui Kang and Xirong Li},
-      year={2024},
-      eprint={2403.11116},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+      year={2025},
+      booktitle = {CVPR},
 }
 ```
