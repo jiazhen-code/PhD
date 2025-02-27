@@ -47,6 +47,7 @@
 
 
 ## News
++ Our work has been accepted at CVPR 2025! 🎉
 + Great news! Our dataset is now available on [Hugging Face](https://huggingface.co/datasets/AIMClab-RUC/PhD). Dive in and explore its potential for your research and projects.
 
 ## Introduction
