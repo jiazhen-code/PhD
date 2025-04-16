@@ -244,7 +244,7 @@ For the evaluation results, please refer to the `experiment` section of the pape
 If you found this work useful, consider giving this repository a star and citing our paper as followed:
 
 ```
-@misc{liu2025phd,
+@inproceedings{liu2025phd,
       title={PhD: A ChatGPT-Prompted Visual hallucination Evaluation Dataset}, 
       author={Jiazhen Liu and Yuhan Fu and Ruobing Xie and Runquan Xie and Xingwu Sun and Fengzong Lian and Zhanhui Kang and Xirong Li},
       year={2025},
